@@ -29,8 +29,13 @@ const mapISubscanValidatorApiResponseToIValidator = (
   data: ISubscanValidatorApiResponse,
   address: string
 ): IValidator => {
+  const controllerDisplayName = data.data.info.controller_account_display.display.trim();
+  const stashDisplayName = data.data.info.stash_account_display.display.trim();
+
+  const name = controllerDisplayName !== "" ? controllerDisplayName : stashDisplayName
+
   const ret: IValidator = {
-    name: data.data.info.controller_account_display.display,
+    name: name,
     address: address,
     statsLink: '',
     fee:
