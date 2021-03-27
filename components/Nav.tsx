@@ -38,15 +38,15 @@ export const Nav: React.FC = () => {
             </Link>
           </Button>
           <Button color="inherit">
-            <Link href="/about">
-              <Typography variant={buttonTextVariant}>About Us</Typography>
-            </Link>
-          </Button>
-          <Button color="inherit">
             <Link href="/stake">
               <Typography variant={buttonTextVariant}>
                 How To Stake KSM
               </Typography>
+            </Link>
+          </Button>
+          <Button color="inherit">
+            <Link href="/about">
+              <Typography variant={buttonTextVariant}>About Us</Typography>
             </Link>
           </Button>
         </Toolbar>

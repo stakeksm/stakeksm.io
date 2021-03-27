@@ -15,9 +15,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     backgroundColor: theme.palette.primary.main,
-    justifyContent: 'center',
-    alignContent: 'center',
     alignItems: 'center',
+    alignContent: 'center',
   },
 }));
 
@@ -31,12 +30,14 @@ export default function About(): JSX.Element {
       <Container maxWidth={'lg'}>
         <Box my={4} color={'white'} className={classes.box}>
           <img src={'images/Kusama1000.png'} width={500} height={200} />
-          <Typography variant="body1" component="h1" gutterBottom>
-            Our aim is to be a 1000 Validators nomination acceleration program.
+          <Box padding={10}>
+            <Typography variant="subtitle1" align={'center'}>
+              {`Our aim is to be a 1000 Validators nomination acceleration program.
             By nominating 16 Validators from our list you are contributing to
             further the decentralization and support the Polkadot network, as
-            well as helping new validators establish a reputation
-          </Typography>
+            well as helping new validators establish a reputation.`}
+            </Typography>
+          </Box>
         </Box>
       </Container>
     </CommonLayout>

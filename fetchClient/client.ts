@@ -32,16 +32,13 @@ const mapISubscanValidatorApiResponseToIValidator = (
   const controllerDisplayName = data.data.info.controller_account_display.display.trim();
   const stashDisplayName = data.data.info.stash_account_display.display.trim();
 
-  const name = controllerDisplayName !== "" ? controllerDisplayName : stashDisplayName
+  const name =
+    controllerDisplayName !== '' ? controllerDisplayName : stashDisplayName;
 
   const ret: IValidator = {
     name: name,
     address: address,
-    statsLink: '',
-    fee:
-      (
-        parseFloat(data.data.info.validator_prefs_value.toString()) / 10000000
-      ).toFixed(2) + '%',
+    fee: data.data.info.validator_prefs_value / 10000000,
     nominators: data.data.info.count_nominators,
     selfBond: parseFloat(data.data.info.bonded_owner) / 1000000000000,
   };
