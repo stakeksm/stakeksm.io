@@ -1,12 +1,16 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import { Box } from '@material-ui/core';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Box,
+  makeStyles,
+  Link,
+  Typography,
+} from '@material-ui/core';
 import { IValidator } from '../models/IValidator';
 
 // import useSWR from 'swr'
@@ -35,11 +39,21 @@ export const ValidatorTable: React.FC<Props> = ({
           <TableHead>
             <TableRow>
               <TableCell>Validator</TableCell>
-              <TableCell align={align}>Address</TableCell>
-              <TableCell align={align}>Stats</TableCell>
-              <TableCell align={align}>Fee</TableCell>
-              <TableCell align={align}>Self Bond</TableCell>
-              <TableCell align={align}>Nominators</TableCell>
+              <TableCell align={align}>
+                <Typography color={'textPrimary'}>Address</Typography>
+              </TableCell>
+              <TableCell align={align}>
+                <Typography color={'textPrimary'}>Stats</Typography>
+              </TableCell>
+              <TableCell align={align}>
+                <Typography color={'textPrimary'}>Fee</Typography>
+              </TableCell>
+              <TableCell align={align}>
+                <Typography color={'textPrimary'}>Self Bond</Typography>
+              </TableCell>
+              <TableCell align={align}>
+                <Typography color={'textPrimary'}>Nominators</Typography>
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -49,7 +63,15 @@ export const ValidatorTable: React.FC<Props> = ({
                   {row.name}
                 </TableCell>
                 <TableCell align={align}>{row.address}</TableCell>
-                <TableCell align={align}>{row.statsLink}</TableCell>
+                <TableCell align={align}>
+                  <Link
+                    href={`https://www.cryptolab.network/tools/validatorStatus?stash=${row.address}`}
+                  >
+                    <Typography color={'textPrimary'}>
+                      Validator Stats
+                    </Typography>
+                  </Link>
+                </TableCell>
                 <TableCell align={align}>{row.fee}</TableCell>
                 <TableCell align={align}>{row.selfBond}</TableCell>
                 <TableCell align={align}>{row.nominators}</TableCell>
