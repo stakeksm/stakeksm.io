@@ -56,8 +56,22 @@ const mapISubscanValidatorApiResponseToIValidator = (
 export const fetchValidators = async (
   validatorAddressList: IValidatorBaseInfo[]
 ): Promise<IValidator[]> => {
-  const validators: IValidator[] = await Promise.all(
-    validatorAddressList.map(fetchSingleValidator)
-  );
+  const validators: IValidator[] = [];
+
+  for (let i = 0; i < validatorAddressList.length; ++i) {
+    // doing a manual for loop rather than using map and Promise.All() since we're getting rate limited.
+    // need to move this out of server side rendering anyways. This is a horrible hack
+    let tryCount = 0;
+    while (tryCount < 3) {
+      try {
+        const result = await fetchSingleValidator(validatorAddressList[i]);
+        validators.push(result);
+        break;
+      } catch {
+        ++tryCount;
+      }
+    }
+  }
+
   return validators;
 };
