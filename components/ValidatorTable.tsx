@@ -4,6 +4,7 @@ import {
   makeStyles,
   Link as ExternalLink,
   Typography,
+  Button,
 } from '@material-ui/core';
 import {
   DataGrid,
@@ -13,6 +14,7 @@ import {
   GridValueFormatterParams,
 } from '@material-ui/data-grid';
 import { IValidator } from '../models/IValidator';
+import copyToClipboard from 'clipboard-copy';
 // import useSWR from 'swr'
 
 const useStyles = makeStyles({
@@ -53,12 +55,25 @@ export const ValidatorTable: React.FC<Props> = ({
     },
     {
       field: 'address',
-      headerName: 'Address',
+      headerName: 'Address (Click to Copy!)',
       description: 'The Kusama stash address of the validator.',
       type: 'string',
       flex: 200,
       headerAlign: 'center',
       align: 'center',
+      renderCell: (params: GridCellParams) => {
+        const address = params.getValue('address') as string;
+        // ugh this is horrible design i can't access the gridcell container from here so there's no good way of justify-content: 'center' besides a top level selector. When you render cell it renders a different class, so the align on the gridcoldef doesn't work like it does elsewhere
+        return (
+          <Button
+            onClick={() => {
+              copyToClipboard(address);
+            }}
+          >
+            <Typography color={'textSecondary'}>{address}</Typography>
+          </Button>
+        );
+      },
     },
     {
       field: 'statsLink',
@@ -67,7 +82,7 @@ export const ValidatorTable: React.FC<Props> = ({
       flex: numberColumnWidth,
       sortable: false,
       renderCell: (params: GridCellParams) => {
-        const address = params.getValue('address');
+        const address = params.getValue('address') as string;
         return (
           <ExternalLink
             href={`https://www.cryptolab.network/tools/validatorStatus?stash=${address}`}
