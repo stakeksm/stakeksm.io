@@ -22,7 +22,7 @@ const useStyles = makeStyles({
     // TODO: these height and widths are HACKS, use flexbox instead
     width: 1000,
     height: 650,
-    background: 'black',
+    background: 'rgba(0, 0, 0, 0.7);',
     color: 'white',
     justifyContent: 'center',
     '& .MuiDataGrid-footer': {
@@ -149,7 +149,7 @@ export const ValidatorTable: React.FC<Props> = ({
       display={'flex'}
       border={1}
       borderRadius={30}
-      bgcolor={'black'}
+      bgcolor={'grey'}
       // height and width need to be corrected, this is set just to debug the  datagrid
     >
       <DataGrid className={classes.table} {...dataGridProps} />
