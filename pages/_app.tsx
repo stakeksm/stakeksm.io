@@ -9,11 +9,6 @@ import { AppProps } from 'next/app';
 const styles = (theme) => ({
   '@global': {
     body: {
-      backgroundImage: 'url(/images/car.png)',
-      backgroundRepeat: 'no-repeat',
-      backgroundSize: 'cover',
-      backgroundPosition: 'center center',
-      backgroundAttachment: 'fixed',
       height: '100%',
     },
     html: {

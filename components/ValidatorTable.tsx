@@ -18,10 +18,14 @@ import copyToClipboard from 'clipboard-copy';
 // import useSWR from 'swr'
 
 const useStyles = makeStyles({
+  container: {
+    height: '100%',
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'row',
+  },
   table: {
     // TODO: these height and widths are HACKS, use flexbox instead
-    width: 1000,
-    height: 650,
     background: 'rgba(0, 0, 0, 0.7);',
     color: 'white',
     justifyContent: 'center',
@@ -142,14 +146,16 @@ export const ValidatorTable: React.FC<Props> = ({
     columns: columns,
     rows: validatorsWithId,
     disableSelectionOnClick: true,
+    autoHeight: true,
   };
 
   return (
     <Box
-      display={'flex'}
-      border={1}
       borderRadius={30}
       bgcolor={'grey'}
+      height={'100%'}
+      overflow={'auto'}
+      // className={classes.container}
       // height and width need to be corrected, this is set just to debug the  datagrid
     >
       <DataGrid className={classes.table} {...dataGridProps} />
