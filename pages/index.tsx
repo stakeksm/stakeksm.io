@@ -2,12 +2,24 @@ import Head from 'next/head';
 import CommonLayout, { siteTitle } from '../components/layout';
 import Link from 'next/link';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import { Container, Box, Typography, Button, Table } from '@material-ui/core';
+import { Box, Typography, makeStyles } from '@material-ui/core';
 import React from 'react';
 import { ValidatorTable } from '../components/ValidatorTable';
 import { validatorAddressList } from '../models/ValidatorAddressList';
 import { fetchValidators } from '../fetchClient/client';
 import { IValidator } from '../models/IValidator';
+
+const useStyles = makeStyles({
+  container: {
+    backgroundImage: 'url(/images/car.png)',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center center',
+    backgroundAttachment: 'fixed',
+    height: '100%',
+    width: '100%',
+  },
+});
 
 interface Props {
   validators: IValidator[];
@@ -27,22 +39,22 @@ const Home: React.FC<Props> = ({
     lineHeight: '1.2em',
   };
 
+  const classes = useStyles();
+
   return (
     <CommonLayout>
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <Container maxWidth="xl">
+      <Box maxWidth="xl" className={classes.container}>
         <Typography align={'center'} style={stakeksmTitleFromWordpress}>
           StakeKSM.io
         </Typography>
         <Typography variant={'h6'} align={'center'}>
           1000 Validator Accelerator
         </Typography>
-        <Box my={4}>
-          <ValidatorTable validators={validators} />
-        </Box>
-      </Container>
+        <ValidatorTable validators={validators} />
+      </Box>
     </CommonLayout>
   );
 };
