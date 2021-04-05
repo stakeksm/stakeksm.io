@@ -18,6 +18,12 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     alignContent: 'center',
   },
+  container: {
+    backgroundImage: 'url(/images/kusama-print-1.png)',
+    backgroundAttachment: 'fixed',
+    height: '100%',
+    width: '100%',
+  },
 }));
 
 export default function About(): JSX.Element {
@@ -27,19 +33,21 @@ export default function About(): JSX.Element {
       <Head>
         <title>{'About Us'}</title>
       </Head>
-      <Container maxWidth={'lg'}>
-        <Box my={4} color={'white'} className={classes.box}>
-          <img src={'images/Kusama1000.png'} width={500} height={200} />
-          <Box padding={10}>
-            <Typography variant="subtitle1" align={'center'}>
-              {`Our aim is to be a 1000 Validators nomination acceleration program.
+      <Box className={classes.container}>
+        <Container maxWidth={'lg'}>
+          <Box my={4} color={'white'} className={classes.box}>
+            <img src={'images/Kusama1000.png'} width={500} height={200} />
+            <Box padding={10}>
+              <Typography variant="subtitle1" align={'center'}>
+                {`Our aim is to be a 1000 Validators nomination acceleration program.
             By nominating 16 Validators from our list you are contributing to
             further the decentralization and support the Polkadot network, as
             well as helping new validators establish a reputation.`}
-            </Typography>
+              </Typography>
+            </Box>
           </Box>
-        </Box>
-      </Container>
+        </Container>
+      </Box>
     </CommonLayout>
   );
 }

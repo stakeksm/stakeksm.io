@@ -25,7 +25,6 @@ const useStyles = makeStyles({
     flexDirection: 'row',
   },
   table: {
-    // TODO: these height and widths are HACKS, use flexbox instead
     background: 'rgba(0, 0, 0, 0.7);',
     color: 'white',
     justifyContent: 'center',
