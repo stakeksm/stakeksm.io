@@ -29,7 +29,7 @@ export const Nav: React.FC = () => {
 
   return (
     <>
-      <AppBar className={classes.root} position={'fixed'}>
+      <AppBar className={classes.root}>
         <Toolbar>
           <img width={65} height={65} src={'/images/Kusama-ksm-logo.png'} />
           <Button color="inherit">

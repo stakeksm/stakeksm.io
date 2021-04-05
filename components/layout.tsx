@@ -16,14 +16,7 @@ const name = 'StakeKSM';
 export const siteTitle = 'StakeKSM.io';
 
 const useStyles = makeStyles((theme) => ({
-  globalContainer: {
-    maxWidth: '36rem',
-    padding: '0 1rem',
-    margin: '3rem auto 6rem',
-  },
-  root: {
-    flexGrow: 1,
-  },
+
   menuButton: {
     marginRight: theme.spacing(2),
   },
@@ -54,7 +47,7 @@ export default function CommonLayout({
   const classes = useStyles();
 
   return (
-    <div>
+    <Box>
       <Head>
         <link rel="icon" href="/images/kusama-ksm-logo.png" />
         <meta
@@ -75,6 +68,6 @@ export default function CommonLayout({
         {children}
       </Box>
       <Footer />
-    </div>
+    </Box>
   );
 }
