@@ -153,7 +153,7 @@ export const ValidatorTable: React.FC<Props> = ({
     <Box
       borderRadius={30}
       bgcolor={'grey'}
-      height={'100%'}
+      height={'70vh'}
       overflow={'auto'}
       // className={classes.container}
       // height and width need to be corrected, this is set just to debug the  datagrid
